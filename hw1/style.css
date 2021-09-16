@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+body {
+  background-image: url("images/python.jpg");
+  background-size: cover;
+}
+
+h1 {
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  color: #023047;
+  color: rgba(2, 48, 71, 1);
+}
+
+td, th {
+
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background: rgba(142, 202, 230, 0.6)
+}
+
+tr:nth-child(odd) {
+  background: rgba(33, 158, 188, 0.6)
+}
