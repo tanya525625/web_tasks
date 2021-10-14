@@ -33,13 +33,11 @@
                 <script type="text/javascript">
                         var is_clicked = Boolean(false);
                         function myFunction() {
-<!--                                document.body.style.background = '#ffcdb2'-->
                                 if (is_clicked == false) document.body.style.background = '#ffcdb2'
                                 else document.body.style.background = 'white';
                                 is_clicked = !is_clicked;
                         }
-
-
+                        
                         var N = 10;
                         var c = Array.from(Array(N), (_, i) => i+1);
                         document.write('<table border>');
