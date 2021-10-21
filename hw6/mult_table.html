@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Multiplication table</title>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                        <style type="text/css">
+                            table, td {
+                                border: solid 3px;
+                            }
+                            table {
+                                float: left; margin-right: 2em;
+                                border-top-color: #6d6875; border-left-color: #6d6875;
+                                border-right-color: #6d6875; border-bottom-color: #6d6875;
+                            }
+                            td, th {
+                                font-size: 10pt; font-family: arial; color: dimgray;
+                                text-align: center; width: 3ex; height: 3ex;
+                                border-top-color: #b5838d; border-left-color: #b5838d;
+                                border-right-color: #b5838d; border-bottom-color: #b5838d;
+                            }
+                        </style>
+        </head>
+        <body>
+                <h1>Multiplication table</h1>
+                  <button onclick="myFunction()" class="btn">
+                    Change Color
+                  </button>
+                <script type="text/javascript">
+                        var styleElem = document.createElement('style');
+                        styleElem.type = 'text/css' ;
+
+                        var clicked_count = 0;
+                        function myFunction() {
+                                var new_col_number = clicked_count % N + 2
+                                var old_col_number = new_col_number - 1
+                                var css_new = 'td:nth-child(' + new_col_number + '){background: #b5838d;}' ;
+                                var css_old = 'td:nth-child(' + old_col_number + '){background: white;}' ;
+                                if(styleElem.styleSheet){
+                                    styleElem.styleSheet.cssText = css_new;
+                                    styleElem.styleSheet.cssText = css_old;
+                                }
+                                else{
+                                    styleElem.appendChild(document.createTextNode(css_new));
+                                    styleElem.appendChild(document.createTextNode(css_old));
+                                }
+                                clicked_count = clicked_count + 1
+                                var head = document.getElementsByTagName('head')[0] ;
+                                head.appendChild(styleElem);
+
+
+                                // // Append the span to the Div
+                                // var container = document.getElementById('bilbo');
+                                // container.innerHTML = '<span class="fontRed">red</span>' ;
+
+                                //         document.body.style.background = '#ffcdb2'
+                                // else document.body.style.background = 'white';
+                                // is_clicked = !is_clicked;
+                        }
+                        
+                        var N = 10;
+
+                        var c = Array.from(Array(N), (_, i) => i+1);
+                        document.write('<table border>');
+                        document.write('<tr>');
+                        document.write('<th>&nbsp;</th>');
+
+                        for(var i = 1; i < c.length; i++) {
+                                document.write('<th>' + i + '</th>')
+                        }
+                        document.write('</tr>');
+                        for(var i = 1; i < c.length; i++) {
+                                document.write('<tr>');
+                                document.write('<th>' + i + '</th>');
+                                for (var j = 1; j < c.length; j++) {
+                                        var k = i * j;
+                                        document.write('<td>');
+                                        document.write(k);
+                                        document.write('</td>');
+
+                                }
+                                document.write('</tr>');
+                        }
+                        document.write('</table>');
+                </script>
+        </body>
+</html>
