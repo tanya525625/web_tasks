@@ -1,0 +1,66 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml">
+     <head>
+         <title>JS timeout</title>
+         <script type="text/javascript">
+             function slowLoop(sf, timeout, count, n, finiFunc) {
+                eval(sf);
+                if(count < n) {
+                   count++;
+                   setTimeout("slowLoop(" + "'" + sf + "'," 
+                                          + timeout + "," + count + "," + n  
+                                          + ",'" + finiFunc + "'" 
+                                          + ")"
+                                   , timeout);
+                }
+                else {
+                   eval(finiFunc);
+                } 
+             }
+             
+             function g(i){
+                document.getElementById("t1").value="count:" + i ;
+             }
+ 
+             function startDemo(){
+                var btn = document.getElementById("b1");
+                btn.disabled = true;
+                slowLoop('g(count)', 100, 0, 5, 
+                         'document.getElementById("b1").disabled = false'
+                        );
+             }
+         </script>
+     </head>
+     <body>
+         <p id="p1">
+             This example demonstrate a loop with delay <br/>
+             Function <code>slowLoop</code> has the following parameters:
+             <dl>
+                <dt>sf</dt>
+                <dd>A string, that contains a function call, that
+                    will invoke several times in a loop.
+                </dd>
+ 
+                <dt>timeout</dt>
+                <dd>Timeout in ms between invocations of the function.
+                </dd>
+ 
+                <dt>count</dt>
+                <dd>Start value of a loop count.
+                </dd>
+ 
+                <dt>n</dt>
+                <dd>Finit value of a loop count.
+                </dd>
+             </dl>    
+         </p>
+         
+         <form id="p2">
+             <input type="button"  id="b1" value="start"
+              onClick="javascript:startDemo();"/>
+             <input type="text" id="t1" value="" style="width:200px;"/>
+ 
+         </form>
+     </body>
+ </html>
+ 

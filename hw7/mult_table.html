@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>home task 2020 10 10</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            table {border-collapse: collapse; float: left;}
+            th {width: 1em; border: #000000 2px solid; background-color: lightcyan;}
+            td {width: 1em; text-align: center; padding: 2px; border: #000000 1px solid;}
+            td:last-child {border-right-width: 2px;}
+            tr:last-child td {border-bottom-width: 2px;}
+            tr:first-child th:first-child {background-color: lightgoldenrodyellow; color: darkred;}
+
+            button {padding: 10px; font-weight: bold; font-size: larger; margin-left: 2em; width: 10em;}
+            .inline {display: inline-block;}
+            h2 {clear: both;}
+
+            .mult {float: left; border: #8888FF 2px dotted; margin: 2px; padding: 2px;}
+
+        </style>
+        <script>
+            var color1 = "#FFFFFF", color2 = "#CCFFCC";
+            var is_start = false;
+            var timerId = null;
+            function g(i){
+                document.getElementById("t1").value="count:" + i ;
+             }
+            function startDemo(){
+                var btn = document.getElementById("b1");
+                is_start = !is_start;
+
+                if (is_start){
+                    timerId = setInterval(() => change(), 500);
+                }
+                else {
+                    clearInterval(timerId);
+                }
+            }
+            function changeColor() {
+                var backColor = backColor = document.body.bgColor;
+                if (backColor === color2) { document.body.bgColor = color1;}
+                else { document.body.bgColor = color2;}
+            }
+            var k = 9;
+            function change() {
+                 document.getElementById("m" + k ).style.backgroundColor = color1;
+                 if (++k == 10) k = 1;
+                 document.getElementById("m" + k ).style.backgroundColor = color2;
+             }
+        </script>
+    </head>
+    <body>
+        <h1>Multiplication Table</h1>
+        <h2>First variant</h2>
+            <script type="text/javascript">
+                document.write('<table class="inline" style="border: black 1px solid;">');
+                for(i = 0; i < 10; i++) {
+                    document.write("<tr>");
+                    for(j = 0; j < 10; j++) {
+                        if (i == 0 && j == 0) document.write("<th> &times; </th>");
+                        else if (i == 0 || j == 0) document.write("<th>" + (i + j) + "</th>");
+                        else document.write("<td>" + i * j + "</td>");
+                    }
+                    document.write("</tr>");
+                }
+                document.write("</table>");
+            </script>
+        <button class="inline" onclick="changeColor();" >change color</button>
+        <button class="inline" id="b1" onclick="startDemo();" > change next </button>
+        <h2>&nbsp;<br>Second variant</h2>
+            <script type="text/javascript">
+                for(i = 1; i < 10; i++) {
+                    document.write("<div class=\"mult\" id=\"m" + i + "\" >");
+                    for(j = 1; j < 10; j++) {
+                        document.write( i + " &times; " + j + " = " + i * j + "<br>");
+                    }
+                    document.write("</div>");
+                }
+            </script>
+
+    </body>
+</html>
