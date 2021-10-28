@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text reverse by button click</title>
+    <script>
+        function reverseString(str) {
+            let splitString = str.split("");
+            let reverseArray = splitString.reverse();
+            let joinArray = reverseArray.join("");
+            return joinArray;
+        }
+
+        function reverse_text(){
+            let base_text = document.getElementById('base_text').value;
+            let to_inv_text = document.getElementById('inv_text');
+            to_inv_text.value = reverseString(base_text);
+        }
+    </script>
+</head>
+<body>
+    <p>Enter your text<Br>
+    <textarea id="base_text" cols="80" rows="15"></textarea></p>
+    <p>Reversed text version<Br>
+    <textarea id="inv_text" cols="80" rows="15"></textarea></p>
+    <button class="inline" onclick="reverse_text();" >inverse text</button>
+</body>
+</html>

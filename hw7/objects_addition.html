@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Child Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var image = new Image();
+            image.src = "image1.jpg";
+        </script>
+    </head>
+    <body>
+        <div>
+            Click button to append or remove picture.
+            <button onclick="document.getElementById('pic').appendChild(image);">append</button>
+            <button onclick="document.getElementById('pic').removeChild(image);">remove</button>
+        </div>
+        <div id="pic"></div>
+    </body>
+</html>
