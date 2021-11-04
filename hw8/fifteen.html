@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Game15</title>
+        <meta charset="UTF-8">
+        <style>
+        </style>
+    </head>
+    <body>
+        <h1>Fifteen game</h1>
+
+        <script>
+          var size = 100;
+          var box = document.createElement('div');
+          box.style.position = 'absolute';
+          box.style.width  = 4 * size +'px';
+          box.style.height = 4 * size +'px';
+          box.style.border = '1px black solid';
+          box.style.backgroundColor = '#bbb';
+          document.body.appendChild(box);
+
+          var top_coef = 0;
+          var left_coef = 0;
+          for(var i = 0; i <= 15; i++) {
+            var sq = document.createElement('div');
+            sq.style.width  = size + 'px';
+            sq.style.height = size + 'px';
+            sq.style.backgroundColor = 'green';
+            sq.style.position = 'relative';
+            // sq.style.top = size +'px';
+            if (i % 4 == 0 && i != 0) {
+                top_coef = top_coef + 1;
+                left_coef = left_coef - 4;
+            }
+            sq.style.left = size * (i + left_coef) +'px';
+            sq.style.bottom = size * (i - top_coef) +'px';
+            sq.innerText = i + 1;
+            sq.style.textAlign = 'center';
+            sq.style.fontSize = 25 + 'px';
+            sq.style.fontWeight = 'bold'
+            if (i == 15) sq.style.opacity = 0;
+            box.appendChild(sq);
+          }
+        </script>
+
+</body>
+</html>
