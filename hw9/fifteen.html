@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Game15</title>
+        <meta charset="UTF-8">
+        <style>
+        </style>
+    </head>
+    <body>
+        <h1>Fifteen game</h1>
+
+        <script>
+          var empty_sq = 16
+          function is_success() {
+              var is_right = true
+              for (var l = 1; l <= 16; l++) {
+                if (parseInt(l, 10) != parseInt(document.getElementById(l).innerHTML, 10)) {
+                    is_right = false;
+                }
+              }
+              return is_right
+          }
+
+          function changeSquaresPlaces(sq_id) {
+              sq_id = parseInt(sq_id, 10);
+            if ((sq_id + 4 == empty_sq) || (sq_id - 4 == empty_sq) || (sq_id - 1 == empty_sq) || (sq_id + 1 == empty_sq))
+            {
+                document.getElementById(empty_sq).style.opacity = 100;
+                document.getElementById(empty_sq).innerHTML = document.getElementById(sq_id).innerHTML;
+                document.getElementById(sq_id).style.opacity = 0;
+                empty_sq = sq_id;
+                document.getElementById(sq_id).innerHTML = 16;
+            }
+            let is_win = is_success();
+                if (is_win == true) {
+                    alert('WIN!')
+                }
+        }
+          var arr = Array.from({length: 16}, () => Math.floor(Math.random() * 15));
+          var size = 100;
+          var box = document.createElement('div');
+          box.style.position = 'relative';
+          box.style.width  = 4 * size +'px';
+          box.style.height = 4 * size +'px';
+          box.style.border = '2px black solid';
+          box.style.backgroundColor = '#bbb';
+          document.body.appendChild(box);
+          let row = 0;
+          let col = 0;
+          for(var i = 1; i <= 16; i++) {
+            var sq = document.createElement('div');
+            sq.style.width  = size + 'px';
+            sq.style.height = size + 'px';
+            sq.style.backgroundColor = '#89b0ae';
+            sq.style.boxSizing = 'border-box';
+            sq.style.border = '1px grey solid';
+            sq.style.position = 'absolute';
+            sq.row = row;
+            sq.col = col;
+            sq.style.top  = sq.row * size + 'px';
+            sq.style.left = sq.col * size + 'px';
+            if(col === 3){ col = 0; row++;} else col++;
+            sq.style.fontSize = size * 0.6 +'px';
+            sq.style.fontWeight = 'bold';
+            sq.style.paddingBottom = size * 0.2 +'px';
+            sq.style.paddingTop = sq.style.paddingBottom;
+            sq.style.fontFamily = 'sans-serif';
+            sq.style.color = 'white';
+            sq.style.textAlign = 'center';
+            sq.id = i;
+            sq.innerHTML = i;
+            sq.onclick = function(){changeSquaresPlaces(this.id)};
+            box.appendChild(sq);
+          }
+          document.getElementById(16).style.opacity = 0;
+        </script>
+
+</body>
+</html>
