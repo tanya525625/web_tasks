@@ -3,18 +3,26 @@
     <head>
         <title>Game15</title>
         <meta charset="UTF-8">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <style>
+            .inline{
+                margin-left: 1ex;
+                width: 25%;
+            }
         </style>
     </head>
     <body>
         <h1>Fifteen game</h1>
 
+        <button class="inline btn-info" onclick="shuffle_sqs();" >Shuffle the squares</button>
+        <p> </p>
+
         <script>
-          var empty_sq = 16
+          var empty_sq = 16;
           function is_success() {
               var is_right = true
               for (var l = 1; l <= 16; l++) {
-                if (parseInt(l, 10) != parseInt(document.getElementById(l).innerHTML, 10)) {
+                if (parseInt(l, 10) != parseInt(document.getElementById().innerHTML, 10)) {
                     is_right = false;
                 }
               }
@@ -36,7 +44,16 @@
                     alert('WIN!')
                 }
         }
-          var arr = Array.from({length: 16}, () => Math.floor(Math.random() * 15));
+
+        function shuffle_sqs(){
+              var arr = Array.from({length: 15}, (_, i) => i + 1)
+              var shuffledArray = arr.sort((a, b) => 0.5 - Math.random());
+              for (var l = 0; l <= 14; l++){
+                 document.getElementById(l+1).innerHTML = shuffledArray[l];
+              }
+              document.getElementById(16).innerHTML = 16;
+        }
+
           var size = 100;
           var box = document.createElement('div');
           box.style.position = 'relative';
@@ -74,6 +91,5 @@
           }
           document.getElementById(16).style.opacity = 0;
         </script>
-
 </body>
 </html>
